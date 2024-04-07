@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Canvas Example</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+
+        body {
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <canvas id="myCanvas"></canvas>
+
+    <script>
+        // Get the canvas element
+        var canvas = document.getElementById('myCanvas');
+        console.log(canvas)
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        var ctx = canvas.getContext('2d');
+
+        // Draw a rectangle
+        ctx.fillStyle = 'rgba(255,0,0,0.1)';
+        ctx.fillRect(50, 50, 100, 75);
+        ctx.fillStyle = 'rgba(0,0,255,0.5)';
+        ctx.fillRect(500, 500, 100, 100);
+        ctx.fillRect(300, 300, 100, 100);
+
+        // Draw a circle
+        ctx.fillStyle = 'red';
+        ctx.beginPath();
+        ctx.arc(300, 100, 50, 0, 2 * Math.PI);
+        ctx.fill();
+
+        //Line
+        ctx.beginPath();
+        ctx.moveTo(200, 300);
+        ctx.lineTo(500, 200);
+        ctx.lineTo(400, 600)
+        ctx.strokeStyle = "#fa34a3"
+        ctx.stroke();
+
+        //Arc / circle
+        ctx.beginPath();
+        ctx.arc(200, 200, 30, 0, Math.PI * 2, false)
+        ctx.strokeStyle = 'green'
+        ctx.stroke();
+
+        for (var i = 0; i < 10; i++) {
+            var x = Math.random() * window.innerWidth;
+            var y = Math.random() * window.innerHeight;
+
+
+            ctx.beginPath();
+            // ctx.arc(500, 350, 50, 0, Math.PI * 2, false)
+            ctx.arc(x, y, 50, 0, Math.PI * 2, false)
+
+
+            var red = Math.floor(Math.random() * 256);
+            var green = Math.floor(Math.random() * 256);
+            var blue = Math.floor(Math.random() * 256);
+
+
+            ctx.strokeStyle = 'rgb(' + red + ',' + green + ',' + blue + ')';
+            ctx.stroke();
+        }
+
+    </script>
+
+</body>
+
+</html>
